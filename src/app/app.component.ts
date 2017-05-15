@@ -24,8 +24,8 @@ export class MyApp {
     });
 
     this.appMenuItems = [
-      { title: 'Ranger', component: 'RangerPage', icon: 'home' },
-      { title: 'Home', component: 'HomePage', icon: 'checkmark-circle' },
+      { title: 'Home', component: 'HomePage', icon: 'home' },
+      { title: 'Ranger', component: 'RangerPage', icon: 'checkmark-circle' },
     ];
   }
 
