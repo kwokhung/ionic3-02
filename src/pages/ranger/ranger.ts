@@ -18,9 +18,11 @@ export class RangerPage {
 //m:lwt("/lwt", "offline", 0, 0)
 //m:on("connect", function(client) print ("connected") end)
 //m:on("offline", function(client) print ("offline") end)
-//m:on("message", function(client, topic, data) print(topic .. ":" ) if data ~= nil then print(data) end end)
-//m:connect("mbltest01.mqtt.iot.gz.baidubce.com", 1883, 0, function(client) print("connected") end, function(client, reason) print("failed reason: "..reason) end)
+//m:on("message", function(client, topic, message) print(topic .. ":" ) if message ~= nil then print(message) end end)
+//m:connect("mbltest01.mqtt.iot.gz.baidubce.com", 1883, 0, 1, function(client) print("connected") end, function(client, reason) print("failed reason: "..reason) end)
+//m:connect("mbltest01.mqtt.iot.gz.baidubce.com", 1884, 1, 1, function(client) print("connected") end, function(client, reason) print("failed reason: "..reason) end)
 //m:subscribe("nodemcu01", 0, function(client) print("subscribe success") end)
+//m:unsubscribe("nodemcu01", function(client) print("unsubscribe success") end)
 //m:publish("letv1s01", "200", 0, 0, function(client) print("sent") end)
 //m:close()
 
