@@ -1,12 +1,12 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Ranger Page</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content class="home" padding>
+<ion-content padding>
   <h2 text-center>Contrast</h2>
   <ion-range min="-200" max="200" pin="true" [(ngModel)]="contrast" color="secondary" (ionChange)="slide($event)">
     <ion-icon range-left small name="contrast"></ion-icon>
