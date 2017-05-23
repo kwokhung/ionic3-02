@@ -26,6 +26,7 @@ export class MyApp {
     this.appMenuItems = [
       { title: 'Home', component: 'HomePage', icon: 'home' },
       { title: 'Ranger', component: 'RangerPage', icon: 'checkmark-circle' },
+      { title: 'Led', component: 'LedPage', icon: 'checkmark-circle' },
     ];
   }
 

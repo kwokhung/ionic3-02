@@ -3,31 +3,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Paho } from 'ng2-mqtt/mqttws31';
 
 @IonicPage({
-  name: 'RangerPage'
+  name: 'LedPage'
 })
 @Component({
-  selector: 'page-ranger',
-  templateUrl: 'ranger.html',
+  selector: 'page-led',
+  templateUrl: 'led.html',
 })
-export class RangerPage {
+export class LedPage {
   contrast: number = 0;
   message: string;
   client: any;
-
-//wifi.setmode(wifi.STATION)
-//wifi.sta.config("MSL01", "wifi0001")
-//m = mqtt.Client("ad7cad07680c47ff80677b3c19bbe6dc", 120, "mbltest01/nodemcu01", "e61m/mza6z5HY0eD4n/sbagP6mkDZeFfmmxSh5KER0w=")
-//m:lwt("/lwt", "offline", 0, 0)
-//m:on("connect", function(client) print ("connected") end)
-//m:on("offline", function(client) print ("offline") end)
-//m:on("message", function(client, topic, message) print(topic .. ":" ) if message ~= nil then print(message) end end)
-//m:on("message", function(client, topic, message) print(topic .. ":" ) if message ~= nil then pwm.setduty(3, 1023 - tonumber(message)) end end)
-//m:connect("mbltest01.mqtt.iot.gz.baidubce.com", 1883, 0, 1, function(client) print("connected") end, function(client, reason) print("failed reason: "..reason) end)
-//m:connect("mbltest01.mqtt.iot.gz.baidubce.com", 1884, 1, 1, function(client) print("connected") end, function(client, reason) print("failed reason: "..reason) end)
-//m:subscribe("nodemcu01", 0, function(client) print("subscribe success") end)
-//m:unsubscribe("nodemcu01", function(client) print("unsubscribe success") end)
-//m:publish("letv1s01", "200", 0, 0, function(client) print("sent") end)
-//m:close()
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.client = new Paho.MQTT.Client("mbltest01.mqtt.iot.gz.baidubce.com", Number("8884"), "/mqtt", "DeviceId-s42mw9zs48");
@@ -45,14 +30,14 @@ export class RangerPage {
 
       let contrast: number = Number(this.message);
 
-      if (contrast >= -200 && contrast <= 200) {
+      if (contrast >= 0 && contrast <= 1023) {
         this.contrast = contrast;
       }
-      else if (contrast < -200) {
-        this.contrast = -200;
+      else if (contrast < 0) {
+        this.contrast = 0;
       }
-      else if (contrast > 200) {
-        this.contrast = 200;
+      else if (contrast > 1023) {
+        this.contrast = 1023;
       }
     };
 
@@ -101,7 +86,7 @@ export class RangerPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RangerPage');
+    console.log('ionViewDidLoad LedPage');
   }
 
   slide(event) {
